@@ -15,6 +15,7 @@ import States from './components/States';
 import Appointment from './components/Appointment';
 import Pincode from './components/pincode';
 import  GoogleMapApi from './components/GoogleMapApi';
+import PincodeCardData from './components/PincodeCardData';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/appointment" exact component={Appointment} />
           <Route path="/pincode" exact component={Pincode} />
           <Route path="/map" exact component={GoogleMapApi} />
+          <Route path="/pinData" exact component={PincodeCardData} />
         </Switch>
       </div>
 
