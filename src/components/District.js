@@ -48,17 +48,21 @@ function District(props) {
         //     .then(resp => setData(resp.districts))
 
         const selectId = e.target.value;
-        history.push({
-            pathname: '/info',
-            stateData: { districtId: selectId }
-        });
+        localStorage.setItem('districtId',e.target.value);
+
+        console.log("selected district id: ", selectId)
+
+        // history.push({
+        //     pathname: '/',
+        //     stateData: { districtId: selectId }
+        // });
     }
 
     return (
         <div style={{ marginLeft: 20 }}>
             {console.log("data inside district from state..............",data)}
                 <select className="form-select" 
-                style={{ width: 500, marginTop: 5 }}
+                style={{ width: 300, marginTop: 5 }}
                 onChange={(e)=> selectDistrictId(e)}
                 >
                     <option> select district </option>

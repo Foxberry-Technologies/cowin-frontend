@@ -18,7 +18,7 @@ class PincodeCardData extends React.Component {
         super(props);
         this.state = {
             data: false,
-            sortType: "asc",
+            sortType: '',
         }
     }
 
@@ -53,6 +53,7 @@ class PincodeCardData extends React.Component {
          .get(`/session/findByPin/${pincode}/${newDate}/${token}`)
         .then(response => 
             this.setState({data: response.data}),
+            // this.handleSort()
             // console.log("send in pincode /////:", response.data)
         )
         .catch(error => {
@@ -61,6 +62,9 @@ class PincodeCardData extends React.Component {
         })
     }
 
+    handleSort = (e) => {
+        console.log("data",e);
+    }
 
     render() {
 
@@ -85,7 +89,7 @@ class PincodeCardData extends React.Component {
                 {
                     cityInfo ?
                         <div>
-                            {cityInfo.sessions.map(post => (
+                            {cityInfo.sessions.sort((a, b) => (a.available_capacity > b.available_capacity) ? -1 : 1).map(post => (
                                 <Card style={{ width: 400, marginLeft: 20, marginTop: 50 }}>
                                     <CardContent key={post.center_id}>
 

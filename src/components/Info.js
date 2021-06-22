@@ -29,63 +29,34 @@ class Info extends React.Component {
 
         if(this.props.location){
             this.setState({
-                district_id: this.props.location.stateData.districtId
+                district_id: localStorage.getItem("districtId")
             })}
+
+            // localStorage.setItem('district_id',this.state.district_id)
 
         console.log("inside info componendidmount:",this.state.district_id );
         
-    }
-        
-
-    submitHandler = async (e) => {
-        e.preventDefault()
-
-        console.log("inside date ..............", this.state.date);
-        console.log("inside id ..............", this.state.district_id);
-
-        var newDate = moment(this.state.date).format('DD-MM-YYYY');
-
-        console.log("newDate", newDate);
-
-        var token = localStorage.getItem("frontendToken");
-         console.log("coming token...........", token);
-
-        await Axios
-            // .get(`/session/findByDistrict/${this.state.district_id}/${this.state.date}/${token} `
-            .get(`/session/findByDistrict/${this.state.district_id}/${newDate} `
-                // headers:{
-                //     'Authorization': `Bearer ${token}` 
-                // }
-            )
-            // .get(`/session/findByDistrict/512/31-03-2021 `)
-            .then(response => 
-                this.setState({data : response.data.sessions}),
-                // console.log("data come from district and date selection.........:", response.data.sessions),
-                this.confirm()
-            )
-            .catch(error => {
-                console.log(error)
-                alert(error);
-            })
     }
 
 
 
     eventHandler = (e) => {
         this.setState({ date : e.target.value });
-
+        localStorage.setItem('date',e.target.value)
         console.log("date selected in  info: ", this.state.date);
     }
 
     confirm = () => {
-        this.props.history.push({pathname:'/card', data : {districtId : this.state.district_id, date : this.state.date}});
+        this.props.history.push({pathname:'/card'});
     }
 
     render() {
 
-        const { data } = this.state;
+        const { date, district_id } = this.state;
         // const cityInfo = data;
-        console.warn("district by data", data);
+        console.warn("district by data///////////", district_id, date);
+
+        localStorage.setItem('district_id',district_id);
 
         // const datta = this.props.location;
 
@@ -94,7 +65,7 @@ class Info extends React.Component {
 
         return (
             <div className="card" style={{ marginLeft: 550, marginRight: 550, marginTop: 30 }}>
-                <form style={{ margin: 20 }} onSubmit={this.submitHandler}>
+                <form style={{ margin: 20 }} onSubmit={this.confirm}>
                     <label style={{ color: 'lightgray', margin: 20 }}> *fill the form to get vaccinated from your District zone.</label>
 
 
@@ -106,7 +77,7 @@ class Info extends React.Component {
                             id="inputAddress"
                             name="district_id"
                             value={this.state.district_id}
-                            onChange={(e) => this.eventHandler(e)}
+                            // onChange={(e) => this.eventHandler(e)}
                         />
                     </div>
                     <div className="col-12" style={{ marginTop: 20 }}>

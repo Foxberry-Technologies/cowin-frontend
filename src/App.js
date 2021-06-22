@@ -16,6 +16,9 @@ import Appointment from './components/Appointment';
 import Pincode from './components/pincode';
 import  GoogleMapApi from './components/GoogleMapApi';
 import PincodeCardData from './components/PincodeCardData';
+import CombinedPinDist from './components/CombinedPinDist';
+import EnterPin from './components/EnterPin';
+import GetHospitalList from './components/GetHospitalList';
 
 function App() {
   return (
@@ -34,9 +37,12 @@ function App() {
           <Route path="/card" exact component={CardData} />
           <Route path="/st" exact component={States} />
           <Route path="/appointment" exact component={Appointment} />
-          <Route path="/pincode" exact component={Pincode} />
+          <Route path="/pin" exact component={Pincode} />
           <Route path="/map" exact component={GoogleMapApi} />
           <Route path="/pinData" exact component={PincodeCardData} />
+          <Route path="/combined" exact component={CombinedPinDist} />
+          <Route path="/enterpin" exact component={EnterPin} />
+          <Route path="/getdata" exact component={GetHospitalList} />
         </Switch>
       </div>
 

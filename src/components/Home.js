@@ -7,6 +7,9 @@ import District from './District';
 // import Sidebar from './Sidebar';
 import CardData from './Card';
 import Info from './Info';
+import SelectDate from './SelectDate';
+import EnterPin from './EnterPin';
+import GetHospitalList from './GetHospitalList';
 
 class Home extends React.Component {
 
@@ -49,23 +52,28 @@ class Home extends React.Component {
         return (
             <>
                 <nav aria-label="breadcrumb">
-                    <ol className="breadcrumb bg-gray" style={{ height: 62, justifyContent: 'space-between' }}>
-                        <img src={logo} alt="logo" style={{ height: 35, width: 35 }} />
+                    <ol className="breadcrumb bg-gray" style={{ height: 62 }}>
+                        <img src={logo} alt="logo" style={{ height: 35, width: 35 }} /> 
                         <li className="breadcrumb-item active" aria-current="page" style={{ marginTop: 5, marginLeft: 15 }}>India</li>
                         {/* <div style={{marginLeft: 15, marginTop:10, marginRight: 20, color:'gray'}}>Select State :</div> */}
-                        <div className="navbar-nav mr-auto " >
+                        <div className="navbar-nav" >
                             <States />
                         </div>
                         {/* <div style={{marginLeft: 15, marginTop:10, marginRight: 20, color:'gray'}}>Select District :</div> */}
-                        <div className="navbar-nav mr-auto" >
+                        <div className="navbar-nav" >
                             <District stateInfo={this.state.come}/>
                             {/* stateInfo={this.state.come} */}
                         </div>
-                        {/* <Sidebar/> */}
+                        <div>
+                            <SelectDate/>
+                        </div>
+                        <div>
+                            <EnterPin/>
+                        </div>
                     </ol>
                 </nav>
                 <div >
-                    <h4 style={{marginLeft: 530}}>Find the Vaccination using selected District :</h4> 
+                    {/* <h4 style={{marginLeft: 530}}>Find the Vaccination using selected District :</h4> 
                 </div>
                 <Info />
                 <div >
@@ -75,7 +83,9 @@ class Home extends React.Component {
                                                      click here
                                                 </a>
                                             </Link>
-                    </h5> 
+                    </h5>  */}
+
+                    <GetHospitalList />
                 </div>
                 {/* <CardData/> */}
             </>

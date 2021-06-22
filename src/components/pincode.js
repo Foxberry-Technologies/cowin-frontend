@@ -66,7 +66,10 @@ class Pincode extends React.Component {
 
 
     confirm = () => {
-        this.props.history.push({pathname:'/pinData', dataSend : {pincode : this.state.pincode, date : this.state.date}});
+        // this.props.history.push({pathname:'/combined', dataSend : {pincode : this.state.pincode, date : this.state.date}});
+        this.props.history.push({pathname:'/combined'});
+        localStorage.setItem('dateInPin',this.state.date)
+        localStorage.setItem('pincodeEntered',this.state.pincode)
     }
 
     render() {

@@ -56,7 +56,7 @@ function States () {
 
             <div style={{ marginLeft: 20 }}>
             <select className="form-select"
-                style={{ width: 500, marginTop: 5 }}
+                style={{ width: 300, marginTop: 5 }}
                 onChange={(e) => selectStateId(e)}
             >
                 <option> select state </option>
